@@ -3,12 +3,14 @@
 	"author": "parithon",
 	"publisher": "parithon",
 	"displayName": "Snap Text Editor",
+	"icon": "./resources/snapIcon@2x.png",
 	"description": "An extension to allow you to snap your text editor to the left, right, top or bottom Visual Studio Code by a command.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/parithon/vscode-snap-TextEditor.git"
 	},
 	"version": "0.1.1",
+	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
 	},
@@ -16,23 +18,26 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"onCommand:snapTextEditor.snapUp",
+		"onCommand:snapTextEditor.snapDown",
+		"onCommand:snapTextEditor.snapLeft",
+		"onCommand:snapTextEditor.snapRight"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"category": "",
+				"category": "View",
 				"command": "snapTextEditor.snapUp",
 				"title": "Snap Up"
 			},
 			{
-				"category": "Snap Text Editor",
+				"category": "View",
 				"command": "snapTextEditor.snapDown",
 				"title": "Snap Down"
 			},
 			{
-				"category": "Snap Text Editor",
+				"category": "View",
 				"command": "snapTextEditor.snapRight",
 				"title": "Snap Right",
 				"icon": {
@@ -41,7 +46,7 @@
 				}
 			},
 			{
-				"category": "Snap Text Editor",
+				"category": "View",
 				"command": "snapTextEditor.snapLeft",
 				"title": "Snap Left"
 			}
