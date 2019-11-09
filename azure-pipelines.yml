@@ -10,7 +10,7 @@ jobs:
   - job: 'Build'
     
     strategy:
-      maxParallel: 9
+      maxParallel: 5
       matrix:
         linux_node-8.x:
           imageName: 'ubuntu-16.04'
@@ -21,21 +21,9 @@ jobs:
         linux_node-12.x:
           imageName: 'ubuntu-16.04'
           node_version: 12.x
-        windows_node-8.x:
-          imageName: 'vs2017-win2016'
-          node_version: 8.x
-        windows_node-10.x:
-          imageName: 'vs2017-win2016'
-          node_version: 10.x
         windows_node-12.x:
           imageName: 'vs2017-win2016'
           node_version: 12.x
-        macOS_node-8.x:
-          imageName: 'macos-10.13'
-          node_version: 8.x
-        macOS_node-10.x:
-          imageName: 'macos-10.13'
-          node_version: 10.x
         macOS_node-12.x:
           imageName: 'macos-10.13'
           node_version: 12.x
