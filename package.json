@@ -3,7 +3,7 @@
 	"author": "parithon",
 	"publisher": "parithon",
 	"displayName": "Snap Text Editor",
-	"icon": "./resources/snapIcon@2x.png",
+	"icon": "resources/snapIcon@2x.png",
 	"description": "An extension to allow you to snap your text editor to the left, right, top or bottom Visual Studio Code by a command.",
 	"repository": {
 		"type": "git",

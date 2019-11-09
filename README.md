@@ -2,7 +2,7 @@
 
 <div style="float: left">
 
-![Icon](./resources/snapIcon.svg)
+![Icon](./resources/snapIcon.png)
 
 </div>
 
