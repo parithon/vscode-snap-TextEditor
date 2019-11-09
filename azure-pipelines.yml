@@ -68,6 +68,13 @@ jobs:
           command: custom
           customCommand: 'run test'
           verbose: false
+
+      - task: PublishTestResults@2
+        displayName: 'Publish test results'
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '**/TEST-*.xml'
+          testRunTitle: '$(Agent.OS) (node: $(node_version))'
           
   - job: 'Publish'
     displayName: 'Publish VSIX Package'

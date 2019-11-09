@@ -3,10 +3,20 @@ import * as Mocha from 'mocha';
 import * as glob from 'glob';
 
 export function run(): Promise<void> {
+	const os = process.env.AGENT_OS || 'Developer';
+	const date = new Date()
+		.toISOString()
+		.replace(/:/g,'-')
+		.replace(/\.\d+/, '');
+
+	process.env.SUITE_NAME = `${os} Tests`;
+	process.env.XUNIT_FILE = path.join(__dirname, 'results', `TEST-RESULTS-${os}-${date}.xml`);
+	
 	// Create the mocha test
 	const mocha = new Mocha({
 		ui: 'tdd',
-		timeout: 5000
+		timeout: 5000,
+		reporter: 'spec-xunit-file'
 	});
 	mocha.useColors(true);
 
