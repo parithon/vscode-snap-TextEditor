@@ -1,8 +1,14 @@
 {
 	"name": "vscode-snap-texteditor",
+	"author": "parithon",
+	"publisher": "parithon",
 	"displayName": "Snap Text Editor",
 	"description": "An extension to allow you to snap your text editor to the left, right, top or bottom Visual Studio Code by a command.",
-	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/parithon/vscode-snap-TextEditor.git"
+	},
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.40.0"
 	},
