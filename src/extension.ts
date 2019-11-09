@@ -26,8 +26,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 }
 
-async function snapTextEditor(textEditor: vscode.TextEditor, snapDirection: SnapDirection) {
-  const viewColumn = snapDirection === SnapDirection.Left ? vscode.ViewColumn.Two : vscode.ViewColumn.One;
+export async function snapTextEditor(textEditor: vscode.TextEditor, snapDirection: SnapDirection) {
+  const viewColumn = snapDirection === SnapDirection.Left || 
+                     snapDirection === SnapDirection.Up ? 
+                     vscode.ViewColumn.Two : vscode.ViewColumn.One;
+                     
   await vscode.commands.executeCommand(snapDirection, textEditor);
   await vscode.window.showTextDocument(textEditor.document, viewColumn, false);
   await vscode.commands.executeCommand('workbench.action.closeActiveEditor', textEditor);
