@@ -59,6 +59,13 @@ jobs:
           command: custom
           customCommand: 'run compile'
           verbose: false
+
+      - task: Npm@1
+        displayName: 'Run Tests'
+        inputs:
+          command: custom
+          customCommand: 'run test'
+          verbose: false
           
   - job: 'Publish'
     displayName: 'Publish VSIX Package'
