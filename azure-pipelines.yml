@@ -62,6 +62,8 @@ jobs:
 
       - task: Npm@1
         displayName: 'Run Tests'
+        env:
+          DISPLAY: :10
         inputs:
           command: custom
           customCommand: 'run test'
