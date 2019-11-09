@@ -79,6 +79,7 @@
 		}
 	},
 	"scripts": {
+		"package": "npx vsce package -o release.vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
