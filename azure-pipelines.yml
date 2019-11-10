@@ -1,10 +1,7 @@
 trigger:
   branches:
-    exclude: 
-    - '*'
-  tags: 
     include:
-    - '*'
+    - release/*
 
 pr: none
 

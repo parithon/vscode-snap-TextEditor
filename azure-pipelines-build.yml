@@ -4,8 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
-- vnext
+  branches:
+    include:
+    - master
+    - vnext
 
 pr: none
 
