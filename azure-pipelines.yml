@@ -105,14 +105,7 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: 'Publish pipeline artifact'
         inputs:
-          targetPath: 'release.vsix'
-
-      - task: Bash@3
-        displayName: 'Publish VSIX to the marketplace'
-        inputs:
-          targetType: 'inline'
-          script: |
-            npx vsce publish --packagePath ./release.vsix -p $(azure-token)
+          targetPath: 'release.vsix'          
 
       - task: GithubRelease@1
         displayName: 'Create Github Release'
@@ -126,3 +119,10 @@ jobs:
           isDraft: true
           changeLogCompareToRelease: 'lastFullRelease'
           changeLogType: 'commitBased'
+
+      - task: Bash@3
+        displayName: 'Publish VSIX to the marketplace'
+        inputs:
+          targetType: 'inline'
+          script: |
+            npx vsce publish --packagePath ./release.vsix -p $(azure-token)
