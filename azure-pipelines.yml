@@ -112,4 +112,4 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            npx vsce --packagePath ./release.vix -p $(azure-token)
+            npx vsce publish --packagePath ./release.vix -p $(azure-token)
