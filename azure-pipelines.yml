@@ -115,7 +115,6 @@ jobs:
           action: 'create'
           target: '$(Build.SourceVersion)'
           tagSource: 'gitTag'
-          tagPattern: 'v*'
           isDraft: true
           changeLogCompareToRelease: 'lastFullRelease'
           changeLogType: 'commitBased'
