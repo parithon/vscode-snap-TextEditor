@@ -1,6 +1,5 @@
 trigger:
-  tags:
-    include: '*'
+  tags: '*'
 
 pr: none
 
