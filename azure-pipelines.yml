@@ -1,5 +1,6 @@
 trigger:
-  branches: none
+  branches:
+    exclude: '*'
   tags: 
     include: '*'
 
