@@ -1,6 +1,6 @@
 trigger:
   tags:
-    include: 'v*'
+    include: '*'
 
 pr: none
 
