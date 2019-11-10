@@ -106,3 +106,10 @@ jobs:
         displayName: 'Publish pipeline artifact'
         inputs:
           targetPath: 'release.vsix'
+
+      - task: Bash@3
+        displayName: 'Publish VSIX to the marketplace'
+        inputs:
+          targetType: 'inline'
+          script: |
+            npx vsce --packagePath ./release.vix -p $(azure-token)
