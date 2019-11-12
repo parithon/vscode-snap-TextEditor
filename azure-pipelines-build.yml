@@ -100,3 +100,25 @@ jobs:
           command: custom
           customCommand: 'run package'
           verbose: false
+
+      - task: CopyFiles@2
+        displayName: 'Copy release notes to staging directory'
+        inputs:
+          SourceFolder: 'releasenotes'
+          Contents: '**'
+          TargetFolder: '$(Build.ArtifactsStagingDirectory)/releasenotes'
+          CleanTargetFolder: true
+
+      - task: CopyFiles@2
+        displayName: 'Copy release.vsix to staging directory'
+        inputs:
+          SourceFolder: '/'
+          Contents: 'release.vsix'
+          TargetFolder: '$(Build.ArtifactsStagingDirectory)'
+          OverWrite: true
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'release'
+          publishLocation: 'Container'
