@@ -77,7 +77,7 @@ jobs:
   - job: 'Publish'
     displayName: 'Publish VSIX Package'
     dependsOn: 'Build'
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'master'))
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
     pool:
       vmImage: 'ubuntu-16.04'
