@@ -17,21 +17,15 @@ jobs:
     strategy:
       maxParallel: 5
       matrix:
-        linux_node-8.x:
+        linux_node-12.4:
           imageName: 'ubuntu-16.04'
-          node_version: 8.x
-        linux_node-10.x:
-          imageName: 'ubuntu-16.04'
-          node_version: 10.x
-        linux_node-12.x:
-          imageName: 'ubuntu-16.04'
-          node_version: 12.x
-        windows_node-12.x:
+          node_version: 12.4
+        windows_node-12.4:
           imageName: 'vs2017-win2016'
-          node_version: 12.x
-        macOS_node-12.x:
+          node_version: 12.4
+        macOS_node-12.4:
           imageName: 'macos-10.13'
-          node_version: 12.x
+          node_version: 12.4
     
     pool:      
       vmImage: $(imageName)
@@ -100,6 +94,34 @@ jobs:
           command: custom
           customCommand: 'run package'
           verbose: false
+
+      - task: PowerShell@2
+        displayName: 'Generate release notes'
+        inputs:
+          targetType: 'inline'
+          # The following script will generate release notes in the releasenotes workingDirectory
+          # based on the CHANGELOG.md file and the section between the first and second matched results
+          # matching the pattern [v1.0.0]. Additionally, it will use the pattern as the postfix
+          # for the release notes. These release notes will then be used in the 'Releases' pipeline
+          # when editing the release/tag entry on Github. (i.e. RELEASE-v1.0.1.md).
+          # EXAMPLE:
+          #
+          #  NOT INCLUDED
+          #
+          #  [v1.0.1] NOT INCLUDED
+          #  THIS WILL BE INCLUDED IN THE RELEASE NOTES
+          #  [v1.0.0] NOT INCLUDED
+          #
+          script: '
+            New-Item -Type Directory -Path releasenotes -Force | Out-Null;
+            $pattern = "\[v\d+\.\d+\.\d+\]";
+            $content = Get-Content -Path ./CHANGELOG.md;
+            $startLine = $content | Select-String -Pattern $pattern | Select -First 1 -ExpandProperty LineNumber;
+            $endLine = $content | Select-String -Pattern $pattern | Select -Skip 1 -First 1 -ExpandProperty LineNumber;
+            $postfix = $content | Select-Object -Skip ($startLine - 1) -First 1 | Select-String -Pattern "v\d+\.\d+\.\d+";
+            $content | Select-Object -Index (($startLine + 1)..($endLine - 2)) | Out-File -FilePath "releasenotes/RELEASE-$($postfix.Matches.Value).md";
+          '
+          pwsh: true
 
       - task: CopyFiles@2
         displayName: 'Copy release notes to staging directory'

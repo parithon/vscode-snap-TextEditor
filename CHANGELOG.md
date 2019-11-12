@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to the "vscode-snap-TextEditor" extension will be documented in this file.
+## Released
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### [v0.1.4]
 
-## [Unreleased]
+- Completed release cycle to include a CI/CD pipeline using Azure Pipelines.
+- Azure Pipelines will build our extension, test the extension, generate release notes via the CHANGELOG.md and package our extension into the VSIX and publish to Azure Artifacts for our release pipeline to publish to Github and the Visual Studio Code marketplace.
+- Removed unneccessary job matrix' from our pipeline and using the explicit version of node to use which matches the version vscode uses.
 
-- Initial release
+[v0.1.4]: https://github.com/parithon/vscode-snap-TextEditor/compare/v0.1.0...v0.1.4

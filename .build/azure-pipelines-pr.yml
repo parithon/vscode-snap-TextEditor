@@ -6,15 +6,15 @@ jobs:
     strategy:
       maxParallel: 3
       matrix:
-        linux_node-8.x:
+        linux_node-12.4:
           imageName: 'ubuntu-16.04'
-          node_version: 8.x
-        linux_node-10.x:
-          imageName: 'ubuntu-16.04'
-          node_version: 10.x
-        linux_node-12.x:
-          imageName: 'ubuntu-16.04'
-          node_version: 12.x
+          node_version: 12.4
+        windows_node-12.4:
+          imageName: 'vs2017-win2016'
+          node_version: 12.4
+        macOS_node-12.4:
+          imageName: 'macos-10.13'
+          node_version: 12.4
 
     pool:
       vmImage: $(imageName)
