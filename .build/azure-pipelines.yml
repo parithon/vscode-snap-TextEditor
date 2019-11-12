@@ -68,6 +68,11 @@ jobs:
           customCommand: 'run test'
           verbose: false
 
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '**/test-results.xml'
+
   - job: 'Publish'
     displayName: 'Publish VSIX Package'
     dependsOn: 'Build'

@@ -6,7 +6,14 @@ export function run(): Promise<void> {
 	// Create the mocha test
 	const mocha = new Mocha({
 		ui: 'tdd',
-		timeout: 5000
+		timeout: 5000,
+		reporter: "mocha-multi-reporters",
+		reporterOptions: {
+			"reporterEnabled": "spec,mocha-junit-reporter",
+			"mochaJunitReporterReporterOptions": {
+				"mochaFile": path.join(__dirname, "..", "test-results.xml")
+			}
+		}
 	});
 	mocha.useColors(true);
 
