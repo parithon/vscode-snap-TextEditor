@@ -72,6 +72,7 @@ jobs:
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '**/test-results.xml'
+          testRunTitle: '$(Agent.OS)'
 
   - job: 'Publish'
     displayName: 'Publish VSIX Package'
@@ -131,7 +132,7 @@ jobs:
       - task: CopyFiles@2
         displayName: 'Copy release notes to staging directory'
         inputs:
-          SourceFolder: 'releasenotes'
+          SourceFolder: './releasenotes'
           Contents: '**'
           TargetFolder: '$(Build.ArtifactsStagingDirectory)/releasenotes'
           CleanTargetFolder: true
@@ -139,7 +140,7 @@ jobs:
       - task: CopyFiles@2
         displayName: 'Copy release.vsix to staging directory'
         inputs:
-          SourceFolder: '/'
+          SourceFolder: '.'
           Contents: 'release.vsix'
           TargetFolder: '$(Build.ArtifactsStagingDirectory)'
           OverWrite: true
