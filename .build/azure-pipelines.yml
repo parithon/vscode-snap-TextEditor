@@ -95,6 +95,16 @@ jobs:
           verbose: false
 
       ## Need to create a way to bump semver in package.json
+      - task: PowerShell@2
+        displayName: 'Verify NPM version with Tag version'
+        inputs:
+          targetType: 'inline'
+          script: '
+            $tagversion = git ls-remote --tags https://github.com/parithon/vscode-snap-TextEditor.git | Select-String -Pattern "\d+\.\d+\.\d+$" | Select -ExpandProperty Matches | Select -ExpandProperty Value
+            $npmversion = Select-String -Path package.json -Pattern '"version": "\d+\.\d+\.\d+"' | Select -First 1 -ExpandProperty Matches | Select -ExpandProperty Value | %{ $_.Substring('"version": "'.Length).Replace('"', '') }
+            if ($tagversion -eq $npmversion) { Write-Error "NPM version $npmversion matches an existing GIT Tag ($tagversion); tag already exists." }
+          '
+          pwsh: true
       
       - task: Npm@1
         displayName: 'Create VSIX package'
