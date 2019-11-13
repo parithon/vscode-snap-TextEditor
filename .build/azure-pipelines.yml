@@ -87,36 +87,6 @@ jobs:
         displayName: 'Use node 12.x'
         inputs:
           versionSpec: 12.x
-
-      - task: BuildVersioning@0
-        inputs:
-          versionSource: 'gitversion'
-          doInstallGitVersion: true
-          GitVersionInstallerSource: 'choco'
-          GitVersionInstallerVersion: '5.0.1'
-          doUseLatestGitVersionInstallerVersion: true
-          paramAssemblyVersion: '7'
-          paramAssemblyFileVersion: '7'
-          paramAssemblyInformationalVersion: '6'
-          paramOverwriteFourthDigitWithBuildCounter: false
-          paramVersionCode: '2'
-          doAssemblyInfoAppendSuffix: false
-          doConvertAssemblyInfoToLowerCase: false
-          buildNumberVersionFormat: '3'
-          buildNumberAction: 'nothing'
-          doReplaceAssemblyInfo: false
-          doReplaceNuspec: false
-          doReplaceNpm: false
-          doReplaceDotNetCore: false
-          doReplaceAndroid: false
-          doReplaceiOS: false
-          doReplaceCustom: false
-          doShowWarningsForUnmatchedRegex: true
-          excludeFilePattern: |
-            !**/bin/**
-            !**/obj/**
-            !**/node_modules/**
-            !**/packages/**
       
       - task: Npm@1
         displayName: 'Install dependencies'
