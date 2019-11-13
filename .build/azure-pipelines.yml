@@ -23,9 +23,9 @@ jobs:
         windows_node-12.4:
           imageName: 'vs2017-win2016'
           node_version: 12.4
-        macOS_node-12.4:
-          imageName: 'macos-10.13'
-          node_version: 12.4
+        # macOS_node-12.4:
+        #   imageName: 'macos-10.13'
+        #   node_version: 12.4
     
     pool:      
       vmImage: $(imageName)
