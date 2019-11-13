@@ -10,7 +10,7 @@ This extension will allow you to snap the text editor (instead of split them). W
 
 master|vnext
 ---|---
-[![Build Status](https://dev.azure.com/parithon/vscode-snap-TextEditor/_apis/build/status/vNext%20Pipeline?branchName=master)](https://dev.azure.com/parithon/vscode-snap-TextEditor/_build/latest?definitionId=69&branchName=master)|[![Build Status](https://dev.azure.com/parithon/vscode-snap-TextEditor/_apis/build/status/vNext%20Pipeline?branchName=vnext)](https://dev.azure.com/parithon/vscode-snap-TextEditor/_build/latest?definitionId=69&branchName=vnext)
+[![Build Status](https://dev.azure.com/parithon/vscode-snap-TextEditor/_apis/build/status/Build%20Pipeline?branchName=master)](https://dev.azure.com/parithon/vscode-snap-TextEditor/_build/latest?definitionId=69&branchName=master)|[![Build Status](https://dev.azure.com/parithon/vscode-snap-TextEditor/_apis/build/status/Build%20Pipeline?branchName=vnext)](https://dev.azure.com/parithon/vscode-snap-TextEditor/_build/latest?definitionId=69&branchName=vnext)
 
 ## Setting a keyboard shortcut
 
@@ -18,3 +18,4 @@ master|vnext
 1. In the **Type to search in keybindings** filter, type: `Snap` then set the keybinding you would like to use to invoke the command.
 
 ![Set keybinding example](https://user-images.githubusercontent.com/8602418/68525810-6024fa80-028a-11ea-9fbe-25b9b5be37a7.gif)
+
