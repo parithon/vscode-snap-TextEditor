@@ -134,7 +134,7 @@ jobs:
         inputs:
           SourceFolder: './releasenotes'
           Contents: '**'
-          TargetFolder: '$(Build.ArtifactsStagingDirectory)/releasenotes'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)/releasenotes'
           CleanTargetFolder: true
 
       - task: CopyFiles@2
@@ -142,7 +142,7 @@ jobs:
         inputs:
           SourceFolder: '.'
           Contents: 'release.vsix'
-          TargetFolder: '$(Build.ArtifactsStagingDirectory)'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
           OverWrite: true
 
       - task: PublishBuildArtifacts@1
