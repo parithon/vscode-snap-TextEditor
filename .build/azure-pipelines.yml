@@ -102,8 +102,12 @@ jobs:
           script: '
             $tagversion = git ls-remote --tags https://github.com/parithon/vscode-snap-TextEditor.git | Select-String -Pattern "\d+\.\d+\.\d+$" | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value;
             $npmversion = Select-String -Path package.json -Pattern """version"": ""\d+\.\d+\.\d+" | Select-Object -First 1 | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value | ForEach-Object { $_.Substring(12) };
+            $logversion = Select-String -Path CHANGELOG.md -Pattern "\d+\.\d+\.\d+" | Select-Object -First 1 | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value;
             if ($tagversion -eq $npmversion) {
-              Write-Error "NPM version $npmversion matches an existing GIT Tag ($tagversion); tag already exists.";
+              Write-Error "NPM version ($npmversion) matches an existing GIT Tag ($tagversion); tag already exists.";
+            };
+            if ($npmversion -ne $logversion) {
+              Write-Error "NPM version ($npmversion) does not match CHANGELOG version ($logversion); version mismatch.";
             };
           '
           pwsh: true
