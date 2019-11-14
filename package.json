@@ -9,7 +9,7 @@
 		"type": "git",
 		"url": "https://github.com/parithon/vscode-snap-TextEditor.git"
 	},
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
@@ -55,7 +55,8 @@
 			"editor/title": [
 				{
 					"command": "snapTextEditor.snapRight",
-					"group": "navigation"
+					"group": "navigation",
+					"when": "config.snapTextEditor.showSnapRightButton"
 				}
 			],
 			"editor/title/context": [
@@ -76,7 +77,19 @@
 					"group": "snapTextEditor@4"
 				}
 			]
-		}
+		},
+		"configuration":[
+			{
+				"title": "Snap Text Editor",
+				"properties": {
+					"snapTextEditor.showSnapRightButton": {
+						"type": "boolean",
+						"default": true,
+						"description": "Show the 'View: Snap Right' button on the editor window"
+					}
+				}
+			}
+		]
 	},
 	"scripts": {
 		"package": "npx vsce package -o release.vsix",
