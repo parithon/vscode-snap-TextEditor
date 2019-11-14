@@ -100,9 +100,11 @@ jobs:
         inputs:
           targetType: 'inline'
           script: '
-            $tagversion = git ls-remote --tags https://github.com/parithon/vscode-snap-TextEditor.git | Select-String -Pattern "\d+\.\d+\.\d+$" | Select -ExpandProperty Matches | Select -ExpandProperty Value
-            $npmversion = Select-String -Path package.json -Pattern """version"": ""\d+\.\d+\.\d+" | Select -First 1 | Select -ExpandProperty Matches | Select -ExpandProperty Value | %{ $_.Substring(12) }
-            if ($tagversion -eq $npmversion) { Write-Error "NPM version $npmversion matches an existing GIT Tag ($tagversion); tag already exists." }
+            $tagversion = git ls-remote --tags https://github.com/parithon/vscode-snap-TextEditor.git | Select-String -Pattern "\d+\.\d+\.\d+$" | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value
+            $npmversion = Select-String -Path package.json -Pattern """version"": ""\d+\.\d+\.\d+" | Select-Object -First 1 | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value | ForEach-Object { $_.Substring(12) }
+            if ($tagversion -eq $npmversion) {
+              Write-Error "NPM version $npmversion matches an existing GIT Tag ($tagversion); tag already exists."
+            }
           '
           pwsh: true
       
