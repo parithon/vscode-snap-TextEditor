@@ -156,6 +156,14 @@ jobs:
           CleanTargetFolder: true
 
       - task: CopyFiles@2
+        displayName: 'Copy package.json to staging directory'
+        inputs:
+          SourceFolder: '.'
+          Contents: 'package*.json'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          OverWrite: true
+
+      - task: CopyFiles@2
         displayName: 'Copy release.vsix to staging directory'
         inputs:
           SourceFolder: '.'
