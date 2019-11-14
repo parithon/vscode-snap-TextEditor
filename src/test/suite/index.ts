@@ -11,7 +11,7 @@ export function run(): Promise<void> {
 		reporterOptions: {
 			"reporterEnabled": "spec,mocha-junit-reporter",
 			"mochaJunitReporterReporterOptions": {
-				"rootSuiteTitle": process.env.AGENT_OS || 'Developer',
+				"rootSuiteTitle": `${process.env.AGENT_OS || 'Developer'}`,
 				"mochaFile": path.join(__dirname, "..", "test-results-[hash].xml")
 			}
 		}
